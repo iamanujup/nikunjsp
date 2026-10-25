@@ -1,0 +1,10 @@
+{
+  "name": "middle-api-test-series",
+  "version": "1.0.0",
+  "description": "Test Series API (cloned from middle-api-two.vercel.app)",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "license": "MIT"
+}
