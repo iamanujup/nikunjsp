@@ -1,0 +1,28 @@
+// api/test-series/[id].js
+const data = require('../../data/testSeries.json');
+
+module.exports = (req, res) => {
+  // CORS
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Content-Type', 'application/json');
+
+  if (req.method === 'OPTIONS') return res.status(200).end();
+
+  const { id } = req.query;
+
+  // Optional: agar id ek specific test id hai (e.g. 280), toh sirf wahi do
+  const singleTest = data.results.find(t => String(t.id) === String(id));
+  if (singleTest && id !== '1') {
+    return res.status(200).json({
+      results: [singleTest],
+      total: 1
+    });
+  }
+
+  // Default: full list return karo (jaise /test-series/1 karta hai)
+  return res.status(200).json({
+    results: data.results,
+    total: data.total
+  });
+};
