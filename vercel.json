@@ -1,15 +1,5 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/test-series/[id].js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/test-series/(.*)",
-      "dest": "/api/test-series/[id].js"
-    }
+  "rewrites": [
+    { "source": "/", "destination": "/api/test-series" }
   ]
 }
